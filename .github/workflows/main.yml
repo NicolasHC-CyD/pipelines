@@ -20,4 +20,7 @@ jobs:
         with:
           working-directory: "frontend"
           build: yarn dev
+      - name: Run cypress
+        run: |
+          yarn run cypress run
           # start: yarn start
