@@ -3,7 +3,7 @@ jobs:
   expres-run:
     runs-on: ubuntu-latest
     container: node:16
-    working-directory: "reporte"
+    # working-directory: "reporte"
     steps:
       - run: yarn --version
       - run: cd reporte/
