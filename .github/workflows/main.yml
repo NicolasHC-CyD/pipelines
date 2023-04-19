@@ -7,7 +7,7 @@ jobs:
   #     - run: node --version
   #     - run: npm --version
   #     - run: yarn --version
-  
+
   cypress-run:
     runs-on: ubuntu-latest
     steps:
@@ -19,8 +19,10 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           working-directory: "frontend"
-          build: yarn dev
+          # build: yarn dev
+      - name: Run server
+        run: |
+          yarn dev
       - name: Run cypress
         run: |
           yarn run cypress run
-          # start: yarn start
