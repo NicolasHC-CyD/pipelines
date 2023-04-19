@@ -6,8 +6,9 @@ jobs:
     steps:
       - run: node --version
       - run: npm --version
-      - run: yarn install
-      - run: yarn dev
+      - run: cd ./reporte/ | yarn install
+      - run: cd ./reporte/ | yarn build
+      - run: cd ./reporte/ | yarn start
 
   # cypress-run:
   #   needs: [express-run]
