@@ -17,6 +17,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          cache-dependency-path: "frontend/yarn.lock"
+          cache-dependency-path: "./frontend/yarn.lock"
           build: yarn run build
           start: yarn start
