@@ -15,9 +15,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
-          cache-dependency-path: "reporte"
-      - run: yarn intall
-      - run: yarn build--if-present
+          # cache-dependency-path: "reporte"
+      - run: |
+        cd reporte/
+        yarn install
+        yarn build
+      # - run: yarn intall
+      # - run: yarn build--if-present
 
   # cypress-run:
   #   needs: [express-run]
