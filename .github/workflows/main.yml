@@ -2,13 +2,22 @@ on: push
 jobs:
   expres-run:
     runs-on: ubuntu-latest
-    container: node:16
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-      - run: node --version
-      - run: npm --version
-      - run: cd ./reporte/ | yarn install
-      - run: cd ./reporte/ | yarn build
-      - run: cd ./reporte/ | yarn start
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+          working-directory: "reporte"
+      - run: yarn intall
+      - run: yarn build--if-present
 
   # cypress-run:
   #   needs: [express-run]
