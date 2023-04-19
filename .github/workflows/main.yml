@@ -18,17 +18,13 @@ jobs:
           cache-dependency-path: "reporte"
           path: 'reporte'
       - name: install dependeces
-        run: yarn install
-      - name: build server
-        run: yarn build
-      - name: start server
-        run: yarn start
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          working-directory: "frontend"
-          build: yarn build
-          start: yarn start
+        run: |
+          cd reporte
+          yarn install
+       - name: Start server 1
+        run: |
+          yarn build
+          yarn start
     
 
   # cypress-run:
