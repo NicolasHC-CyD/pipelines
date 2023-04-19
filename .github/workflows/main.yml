@@ -1,16 +1,7 @@
 on: push
 jobs:
-  express-run:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./reporte
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
@@ -22,17 +13,16 @@ jobs:
       - name: Deploy A
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: reporte
+          FOLDER: build-a
       - name: Deploy B
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          # ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: frontend
+          FOLDER: build-b
         needs: Deploy A
-      # - run: yarn --version
 
   # cypress-run:
   #   # needs: [express-run]
