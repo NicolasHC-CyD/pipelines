@@ -17,7 +17,7 @@ jobs:
           cache: "yarn"
           cache-dependency-path: "reporte"
       - name: install dependeces
-        run: yarn intall
+        run: yarn install
       - name: build server
         run: yarn build
       - name: start server
