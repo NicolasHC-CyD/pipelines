@@ -20,7 +20,7 @@ jobs:
           cache: "yarn"
 
       - name: start express
-      - run: yarn install
+      - run: yarn i
       - run: yarn build--if-present
 
   # cypress-run:
