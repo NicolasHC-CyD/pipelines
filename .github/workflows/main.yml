@@ -5,6 +5,7 @@ jobs:
     defaults:
       run:
         working-directory: ./reporte
+
     strategy:
       matrix:
         node-version: [16.x]
@@ -16,7 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "yarn"
+          # cache: "yarn"
 
       - name: start express
       - run: yarn intall
