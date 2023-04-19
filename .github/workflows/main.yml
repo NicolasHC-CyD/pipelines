@@ -1,12 +1,13 @@
 on: push
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    container: node:16
-    steps:
-      - run: node --version
-      - run: npm --version
-      - run: yarn --version
+  # job1:
+  #   runs-on: ubuntu-latest
+  #   container: node:16
+  #   steps:
+  #     - run: node --version
+  #     - run: npm --version
+  #     - run: yarn --version
+  
   cypress-run:
     runs-on: ubuntu-latest
     steps:
@@ -18,6 +19,6 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           # cache-dependency-path: "./frontend/yarn.lock"
-          working-directory: "./frontend/yarn.lock"
+          working-directory: "../frontend/yarn.lock"
           build: yarn run build
           start: yarn start
