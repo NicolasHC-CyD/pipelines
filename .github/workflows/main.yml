@@ -2,10 +2,6 @@ on: push
 jobs:
   expres-run:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: reporte
-
     strategy:
       matrix:
         node-version: [16.x]
@@ -19,6 +15,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
 
+      - name: start express
+        working-directory: ./reporte
       - run: yarn intall
       - run: yarn build--if-present
 
