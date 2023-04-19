@@ -19,10 +19,10 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           working-directory: "frontend"
-          # build: yarn dev
-      - name: Run server
-        run: |
-          yarn dev
-      - name: Run cypress
-        run: |
-          yarn run cypress run
+          build: yarn dev
+      # - name: Run server
+      #   run: |
+      #     yarn dev
+      # - name: Run cypress
+      #   run: |
+      #     yarn run cypress run
