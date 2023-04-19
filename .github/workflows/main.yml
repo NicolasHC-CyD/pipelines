@@ -23,6 +23,7 @@ jobs:
           yarn install
       - name: Start server 1
         run: |
+          cd reporte
           yarn build
           yarn start
     
