@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
-          working-directory: "reporte"
+          cache-dependency-path: "reporte"
       - run: yarn intall
       - run: yarn build--if-present
 
