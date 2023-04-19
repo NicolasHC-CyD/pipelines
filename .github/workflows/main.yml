@@ -21,7 +21,7 @@ jobs:
         run: |
           cd reporte
           yarn install
-       - name: Start server 1
+      - name: Start server 1
         run: |
           yarn build
           yarn start
