@@ -2,11 +2,18 @@ on: push
 jobs:
   expres-run:
     runs-on: ubuntu-latest
-    container: node:16
-    # working-directory: "reporte"
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          working-directory: "reporte"
       - run: yarn --version
-      - run: cd reporte/
 
   # cypress-run:
   #   runs-on: ubuntu-latest
