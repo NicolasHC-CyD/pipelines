@@ -21,7 +21,7 @@ jobs:
           cache-dependency-path: "reporte"
           
       - run: yarn install 
-      - run: yarn build--if-present
+      - run: yarn build
 
   # cypress-run:
   #   needs: [express-run]
