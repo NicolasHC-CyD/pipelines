@@ -5,21 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      # - name: Build the Docker django image
+      # EXPRESS
+      # - name: Build the Docker express image
       #   run: |
       #     cd reporte
-      #     docker build -t django:1 .
-      # - name: Run docker django:1
-      #   run: docker run -p 8000:8000 -d --name django-docker django:1
-
-      - name: Build the Docker express image
-        run: |
-          cd reporte
-          docker build -t express:1 .
-      - name: Run docker express:1
-        run: docker run -p 5001:5001 -d --name express-docker express:1
-
+      #     docker build -t express:1 .
+      # - name: Run docker express:1
+      #   run: docker run -p 5001:5001 -d --name express-docker express:1
+      # DJANGO
       - name: Build the Docker react image
         run: |
           cd frontend
