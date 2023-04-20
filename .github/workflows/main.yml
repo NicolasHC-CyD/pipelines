@@ -15,7 +15,7 @@ jobs:
     - name: Run docker 
       run: docker run -p 5001:5001 -d --name express-docker express:1 
     - name: check docker
-      run: docker -ps
+      run: docker ps
     - name: stop docker
       run: docker stop express-docker
     
