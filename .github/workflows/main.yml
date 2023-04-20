@@ -1,36 +1,37 @@
 on: push
 
 jobs:
-
-  express:
-
+  run-test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Build the Docker image Express
-      run: | 
-        cd reporte
-        docker build -t express:1 .
-    - name: Run docker Express
-      run: docker run -p 5001:5001 -d --name express-docker express:1 
+      - name: Build the Docker django image
+        run: |
+          cd reporte
+          docker build -t django:1 .
+      - name: Run docker django:1
+        run: docker run -p 8000:8000 -d --name django-docker django:1
+        
+      - name: Build the Docker express image
+        run: |
+          cd reporte
+          docker build -t express:1 .
+      - name: Run docker express:1
+        run: docker run -p 5001:5001 -d --name express-docker express:1
 
-    - name: Build the Docker image django
-      run: | 
-        cd mysite
-        docker build -t django:1 .
-    - name: Run docker Django
-      run: docker run -p 8000:8000 -d --name django-docker django:1 
+      - name: Build the Docker react image
+        run: |
+          cd frontend
+          docker build -t react:1 .
+      - name: Run docker react
+        run: docker run -p 3000:3000 -d --name react-docker react:1
 
-    - name: Cypress run
-      uses: cypress-io/github-action@v5
-      with:
-        working-directory: "frontend"
-        build: yarn build
-        start: yarn start
-    
+      - name: Run cypress
+        run: | 
+          cd frontend
+          yarn add cypress --dev
+          npx cypress run --record --key 2df36ced-321d-442d-870b-8f588f982f85
 
   # cypress:
   #   needs: [express]
