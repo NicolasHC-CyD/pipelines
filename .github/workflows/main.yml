@@ -22,6 +22,10 @@ jobs:
       - name: Run docker express:1
         run: docker run -p 5001:5001 -d --name express-docker express:1
       #### React && Cypress
+      - name: yarn install
+        run: |
+          cd frontend
+          yarn install
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
@@ -32,4 +36,3 @@ jobs:
         env:
           # pass the Cypress Cloud record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          

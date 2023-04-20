@@ -1,4 +1,5 @@
 mysite/**/__pycache__
 venv
+**/package-lock.json
 **/yarn.lock
 yarn.lock
