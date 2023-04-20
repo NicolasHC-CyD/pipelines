@@ -1,2 +1,4 @@
 mysite/**/__pycache__
 venv
+**/yarn.lock
+yarn.lock
