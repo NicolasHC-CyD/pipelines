@@ -5,19 +5,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - name: Build the Docker express image
-      #   run: |
-      #     cd reporte
-      #     docker build -t express:1 .
-      # - name: Run docker express
-      #   run: docker run -p 5001:5001 -d --name express-docker express:1
+      - name: Build the Docker express image
+        run: |
+          cd reporte
+          docker build -t express:1 .
+      - name: Run docker express
+        run: docker run -p 5001:5001 -d --name express-docker express:1
 
-      # - name: Build the Docker react image
-      #   run: |
-      #     cd frontend
-      #     docker build -t react:1 .
-      # - name: Run docker react
-      #   run: docker run -p 3000:3000 -d --name react-docker react:1
+      - name: Build the Docker react image
+        run: |
+          cd frontend
+          docker build -t react:1 .
+      - name: Run docker react
+        run: docker run -p 3000:3000 -d --name react-docker react:1
 
       - name: Run cypress
         run: | 
