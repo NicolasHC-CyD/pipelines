@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --file ./reporte/Dockerfile --tag express:1
+      run: docker build ./reporte/Dockerfile --tag express:1
     - name: Run docker 
       run: docker run -p 5001:5001 -d --name express-docker express:1 
     - name: check docker
