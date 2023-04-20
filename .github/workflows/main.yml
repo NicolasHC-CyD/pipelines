@@ -1,41 +1,22 @@
 on: push
+
 jobs:
-  expres-run:
+
+  express:
+
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "yarn"
-
-      # - name: Download docker
-      - run: docker pull nicolashc1/express
-      # - name: run Docker
-      - run: docker run -p 5001:5001 -d --name docker-express express
-      # - name: Check docker run
-      - run: docker ps
-      # - name: Close docker
-      - run: docker stop docker-express
-      # - name: Start server 2
-      #   env:
-      #     SERVER_1_URL: http://localhost:5001
-      #   run: |
-      #     cd frontend
-      #     yarn install
-      #     until $(curl --output /dev/null --silent --head --fail $SERVER_1_URL); do
-      #       printf '.'
-      #       sleep 5
-      #     done
-      #     yarn build
-      #     yarn start
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build ./reporte/. --file Dockerfile --tag express:1
+    - name: Run docker 
+      run: docker run -p 5001:5001 -d --name express-docker express:1 
+    - name: check docker
+      run: docker -ps
+    - name: stop docker
+      run: docker stop express-docker
+    
 
   # cypress-run:
   #   needs: [express-run]
