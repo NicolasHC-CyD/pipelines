@@ -22,7 +22,7 @@ jobs:
         cd mysite
         docker build -t django:1 .
     - name: Run docker Django
-      run: docker run -p 5001:5001 -d --name django-docker django:1 
+      run: docker run -p 8000:8000 -d --name django-docker django:1 
 
     - name: Cypress run
       uses: cypress-io/github-action@v5
