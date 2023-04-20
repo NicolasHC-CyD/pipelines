@@ -44,4 +44,5 @@ jobs:
           start: yarn start
         env:
           # pass the Cypress Cloud record key as an environment variable
-          CYPRESS_RECORD_KEY: 2df36ced-321d-442d-870b-8f588f982f85
+          # CYPRESS_RECORD_KEY: 2df36ced-321d-442d-870b-8f588f982f85
+          CYPRESS_RECORD_KEY: ${{ secrets.test.CYPRESS_RECORD_KEY }}
