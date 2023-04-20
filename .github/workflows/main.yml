@@ -7,14 +7,14 @@ jobs:
     #   ACTIONS_RUNNER_DEBUG: true
     steps:
       - uses: actions/checkout@v3
-      # Express
-      # - name: Build the Docker express image
-      #   run: |
-      #     cd reporte
-      #     docker build -t express:1 .
-      # - name: Run docker express:1
-      #   run: docker run -p 5001:5001 -d --name express-docker express:1
-      # React
+      #### Express
+      - name: Build the Docker express image
+        run: |
+          cd reporte
+          docker build -t express:1 .
+      - name: Run docker express:1
+        run: docker run -p 5001:5001 -d --name express-docker express:1
+      #### React
       - name: Build the Docker react image
         run: |
           cd frontend
