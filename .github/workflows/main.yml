@@ -16,14 +16,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
 
-      - name: Download docker
-        uses: docker pull nicolashc1/express
-      - name: run Docker
-        uses: docker run -p 5001:5001 -d --name docker-express express
-      - name: Check docker run
-        uses: docker ps
-      - name: Close docker
-        uses: docker stop docker-express
+      # - name: Download docker
+      - run: docker pull nicolashc1/express
+      # - name: run Docker
+      - run: docker run -p 5001:5001 -d --name docker-express express
+      # - name: Check docker run
+      - run: docker ps
+      # - name: Close docker
+      - run: docker stop docker-express
       # - name: Start server 2
       #   env:
       #     SERVER_1_URL: http://localhost:5001
@@ -36,7 +36,6 @@ jobs:
       #     done
       #     yarn build
       #     yarn start
-    
 
   # cypress-run:
   #   needs: [express-run]
