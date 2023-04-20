@@ -3,6 +3,8 @@ on: push
 jobs:
   job-a:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_RUNNER_DEBUG: true
     steps:
       - name: Step 1
         run: echo "Hello from Job A"
@@ -18,6 +20,12 @@ jobs:
     needs: job-a
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install @octokit/rest
       - name: Cancel Job A
         uses: actions/github-script@v4
         with:
