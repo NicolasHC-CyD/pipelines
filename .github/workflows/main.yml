@@ -7,15 +7,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
     - uses: actions/checkout@v3
-    - name: Build the Docker image
+
+    - name: Build the Docker image Express
       run: | 
         cd reporte
         docker build -t express:1 .
-    - name: Run docker 
+    - name: Run docker Express
       run: docker run -p 5001:5001 -d --name express-docker express:1 
-    # - name: Checkout
-    #     uses: actions/checkout@v3
+
+    - name: Build the Docker image django
+      run: | 
+        cd mysite
+        docker build -t django:1 .
+    - name: Run docker Django
+      run: docker run -p 5001:5001 -d --name django-docker django:1 
+
     - name: Cypress run
       uses: cypress-io/github-action@v5
       with:

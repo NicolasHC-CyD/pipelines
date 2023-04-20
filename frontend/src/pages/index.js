@@ -135,7 +135,16 @@ export default function Home() {
           click
         </button>
         {data.map((el, idx) => (
-          <p key={idx}>{el}</p>
+          <a
+            href="http://localhost:8000/"            
+          >
+            <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
+              {el}{" "}
+              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                -&gt;
+              </span>
+            </h2>
+          </a>
         ))}
       </div>
     </main>
