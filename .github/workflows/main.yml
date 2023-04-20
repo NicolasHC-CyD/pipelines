@@ -15,29 +15,27 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
-          cache-dependency-path: "reporte"
-          path: 'reporte'
-      - name: install dependeces
-        run: |
-          cd reporte
-          yarn install
-      - name: Start server 1
-        run: |
-          cd reporte
-          yarn build
-          yarn start
-      - name: Start server 2
-        env:
-          SERVER_1_URL: http://localhost:5001
-        run: |
-          cd frontend
-          yarn install
-          until $(curl --output /dev/null --silent --head --fail $SERVER_1_URL); do
-            printf '.'
-            sleep 5
-          done
-          yarn build
-          yarn start
+
+      - name: Download docker
+        uses: docker pull nicolashc1/express
+      - name: run Docker
+        uses: docker run -p 5001:5001 -d --name docker-express express
+      - name: Check docker run
+        uses: docker ps
+      - name: Close docker
+        uses: docker stop docker-express
+      # - name: Start server 2
+      #   env:
+      #     SERVER_1_URL: http://localhost:5001
+      #   run: |
+      #     cd frontend
+      #     yarn install
+      #     until $(curl --output /dev/null --silent --head --fail $SERVER_1_URL); do
+      #       printf '.'
+      #       sleep 5
+      #     done
+      #     yarn build
+      #     yarn start
     
 
   # cypress-run:
