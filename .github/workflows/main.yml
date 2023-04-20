@@ -1,28 +1,29 @@
 on: push
 
 jobs:
-
-  express:
-
+  run test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: | 
-        cd reporte
-        docker build -t express:1 .
-    - name: Run docker 
-      run: docker run -p 5001:5001 -d --name express-docker express:1 
-    # - name: Checkout
-    #     uses: actions/checkout@v3
-    - name: Cypress run
-      uses: cypress-io/github-action@v5
-      with:
-        working-directory: "frontend"
-        build: yarn build
-        start: yarn start
-    
+      - uses: actions/checkout@v3
+      - name: Build the Docker express image
+        run: |
+          cd reporte
+          docker build -t express:1 .
+      - name: Run docker express
+        run: docker run -p 5001:5001 -d --name express-docker express:1
+      # - name: Checkout
+      #     uses: actions/checkout@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: "frontend"
+          build: yarn build
+          start: yarn start
+        env:
+          # overwrite commit message sent to Cypress Cloud
+          COMMIT_INFO_MESSAGE: ${{github.event.pull_request.title}}
+          # re-enable PR comment bot
+          COMMIT_INFO_SHA: ${{github.event.pull_request.head.sha}}
 
   # cypress:
   #   needs: [express]
