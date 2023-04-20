@@ -21,6 +21,8 @@ jobs:
           docker build -t express:1 .
       - name: Run docker express:1
         run: docker run -p 5001:5001 -d --name express-docker express:1
+      - name: dockers
+        run: docker ps
       #### React && Cypress
       - name: yarn install
         run: |
