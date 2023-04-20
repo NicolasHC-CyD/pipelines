@@ -21,20 +21,7 @@ jobs:
           docker build -t express:1 .
       - name: Run docker express:1
         run: docker run -p 5001:5001 -d --name express-docker express:1
-      #### React
-      # - name: Build the Docker react image
-      #   run: |
-      #     cd frontend
-      #     docker build -t react:1 .
-      # - name: Run docker react
-      #   run: docker run -p 3000:3000 -d --name react-docker react:1
-
-      # - name: Run cypress
-      #   run: | 
-      #     cd frontend
-      #     yarn add cypress --dev
-      #     npx cypress run --record --key 2df36ced-321d-442d-870b-8f588f982f85
-
+      #### React && Cypress
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
@@ -44,5 +31,5 @@ jobs:
           start: yarn start
         env:
           # pass the Cypress Cloud record key as an environment variable
-          # CYPRESS_RECORD_KEY: 2df36ced-321d-442d-870b-8f588f982f85
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          
