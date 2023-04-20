@@ -11,7 +11,7 @@ jobs:
     - name: Build the Docker image
       run: | 
         cd reporte
-        docker build -t express:1
+        docker build -t express:1 .
     - name: Run docker 
       run: docker run -p 5001:5001 -d --name express-docker express:1 
     - name: check docker
