@@ -9,7 +9,7 @@ jobs:
       - name: Step 1
         run: echo "Hello from Job A"
       - name: Step 2
-        run: sleep 30
+        run: sleep 3
       - name: Step 3
         run: echo "Goodbye from Job A"
     outputs:
