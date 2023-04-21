@@ -9,20 +9,20 @@ services:
     ports:
       - "5432:5432"
 
-  # django:
-  #   build: mysite
-  #   ports:
-  #     - "8000:8000"
-  #   command: python manage.py runserver 0.0.0.0:8000
-  #   environment:
-  #     - DB_HOST=db
-  #   depends_on:
-  #     - db
+  django:
+    build: mysite
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - DB_HOST=db
+    depends_on:
+      - db
 
-  # express:
-  #   build: reporte
-  #   ports:
-  #     - "5001:5001"
+  express:
+    build: reporte
+    ports:
+      - "5001:5001"
 
   # react:
   #   build: frontend

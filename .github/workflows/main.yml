@@ -8,10 +8,10 @@ jobs:
 
       #### Docker compose
       - name: Run docker composes
-        run: docker-compose up --build
+        run: docker-compose up --build -d
           
-      # - name: Run migrate on django
-      #   run: docker-compose exec django python manage.py migrate
+      - name: Run migrate on django
+        run: docker-compose exec django python manage.py migrate
           
       # - name: Run createsuperuser on django
       #   run: |
