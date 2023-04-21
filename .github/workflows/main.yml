@@ -9,10 +9,13 @@ jobs:
       #### Docker compose
       - name: Run docker composes
         run: docker-compose up --build -d
-          
+
+      - name: Docker ps
+        run: docker ps
+
       - name: Run migrate on django
         run: docker-compose exec django python manage.py migrate
-          
+
       # - name: Run createsuperuser on django
       #   run: |
       #     docker-compose exec django python manage.py createsuperuser
@@ -21,10 +24,7 @@ jobs:
       #     docker-compose exec django admin
       #     docker-compose exec django admin
       #     docker-compose exec django y
-          
-        
 
-      
       # #### DJANGO
       # - name: Build the Docker django image
       #   run: |
@@ -48,7 +48,7 @@ jobs:
       #   run: docker run -p 3000:3000 -d --name react-docker react:1
 
       # - name: Run cypress
-      #   run: | 
+      #   run: |
       #     cd frontend
       #     yarn add cypress --dev
       #     npx cypress run --record --key 2df36ced-321d-442d-870b-8f588f982f85
