@@ -19,10 +19,10 @@ services:
     depends_on:
       - db
 
-  express:
-    build: reporte
-    ports:
-      - "5001:5001"
+  # express:
+  #   build: reporte
+  #   ports:
+  #     - "5001:5001"
 
   # react:
   #   build: frontend
