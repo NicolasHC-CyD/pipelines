@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=revergy
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=cntpasscfg
+    ports:
+      - "5432:5432"
+
+  django:
+    build: mysite
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./mysite/:/code
+    environment:
+      - DB_HOST=db
+    depends_on:
+      - db
+
+  express:
+    build: reporte
+    ports:
+      - "5001:5001"
+
+  # react:
+  #   build: frontend
+  #   ports:
+  #     - "3000:3000"
+    
