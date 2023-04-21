@@ -14,7 +14,7 @@ jobs:
         run: docker ps
 
       - name: Run migrate on django
-        run: docker-compose exec django python manage.py migrate
+        run: docker-compose -T django python manage.py migrate
 
       # - name: Run createsuperuser on django
       #   run: |
