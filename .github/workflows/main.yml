@@ -16,14 +16,14 @@ jobs:
       - name: Run migrate on django
         run: docker-compose exec -T django python manage.py migrate
 
-      # - name: Run createsuperuser on django
-      #   run: |
-      #     docker-compose exec django python manage.py createsuperuser
-      #     docker-compose exec django admin
-      #     docker-compose exec django admin
-      #     docker-compose exec django admin
-      #     docker-compose exec django admin
-      #     docker-compose exec django y
+      - name: Run createsuperuser on django
+        run: |
+          docker-compose exec -T django python manage.py createsuperuser
+          docker-compose exec -T admin
+          docker-compose exec -T 
+          docker-compose exec -T admin
+          docker-compose exec -T admin
+          docker-compose exec -T y
 
       # #### DJANGO
       # - name: Build the Docker django image
