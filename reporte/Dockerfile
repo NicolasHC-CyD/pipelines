@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:alpine3.16
 WORKDIR /express
 COPY package.json ./
 RUN yarn install --frozen-lockfile
