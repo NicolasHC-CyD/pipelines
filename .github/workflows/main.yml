@@ -18,7 +18,9 @@ jobs:
 
       - name: Run createsuperuser on django
         run: |
-          docker-compose exec -T django echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
+          docker-compose exec -T django python manage.py shell
+          docker-compose exec -T django from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')
+          docker-compose exec -T django exit()
 
       # #### DJANGO
       # - name: Build the Docker django image
