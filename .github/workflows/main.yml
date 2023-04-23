@@ -6,6 +6,8 @@ jobs:
     services: 
       django:
         image: nicolashc1/django:1
+        env:
+          name: django:1
         ports:
           - 8000/tcp
       express:
@@ -24,12 +26,12 @@ jobs:
         
 
       - name: Run migrate on django
-        run: docker exec -T django python manage.py migrate
+        run: docker exec -it django:1 python manage.py migrate
 
       - name: Run createsuperuser on django
         run: |
-          docker exec -T django python manage.py shell
-          docker exec -T django echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')"
+          docker exec -it django:1 python manage.py shell
+          docker exec -it django:1 echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')"
 
       # - name: yarn install for fronend
       #   run: |
