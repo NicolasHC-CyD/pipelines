@@ -1,15 +1,19 @@
 on: push
 
 jobs:
-  run-test:
+  build-backend:
     runs-on: ubuntu-latest
+    services: 
+      back:
+        #### Docker compose
+        - name: Run docker composes
+          run: docker-compose up --build -d
+        ports:
+          - 8000/tcp
+          - 5001/tcp
+
     steps:
       - uses: actions/checkout@v3
-
-      #### Docker compose
-      - name: Run docker composes
-        run: docker-compose up --build -d
-
       - name: Docker ps
         run: docker ps
 
@@ -21,45 +25,19 @@ jobs:
           docker-compose exec -T django python manage.py shell
           docker-compose exec -T django echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')"
 
-      - name: yarn install for fronend
-        run: |
-          cd frontend
-          yarn install
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          record: true
-          working-directory: frontend
-          build: yarn build
-          start: yarn start
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
-      # #### DJANGO
-      # - name: Build the Docker django image
-      #   run: |
-      #     cd mysite
-      #     docker build -t django:1 .
-      # - name: Run docker django:1
-      #   run: docker run -p 8000:8000 -d --name django-docker django:1
-      # #### Express
-      # - name: Build the Docker express image
-      #   run: |
-      #     cd reporte
-      #     docker build -t express:1 .
-      # - name: Run docker express:1
-      #   run: docker run -p 5001:5001 -d --name express-docker express:1
-      # #### React
-      # - name: Build the Docker react image
+      # - name: yarn install for fronend
       #   run: |
       #     cd frontend
-      #     docker build -t react:1 .
-      # - name: Run docker react
-      #   run: docker run -p 3000:3000 -d --name react-docker react:1
+      #     yarn install
 
-      # - name: Run cypress
-      #   run: |
-      #     cd frontend
-      #     yarn add cypress --dev
-      #     npx cypress run --record --key 2df36ced-321d-442d-870b-8f588f982f85
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v5
+      #   with:
+      #     record: true
+      #     working-directory: frontend
+      #     build: yarn build
+      #     start: yarn start
+      #   env:
+      #     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+  
