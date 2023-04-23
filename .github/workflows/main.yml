@@ -4,9 +4,13 @@ jobs:
   build-backend:
     runs-on: ubuntu-latest
     services: 
-      back:
+      django:
+        image: nicolashc1/django:1
         ports:
           - 8000/tcp
+      django:
+        image: nicolashc1/express:2
+        ports:
           - 5001/tcp
 
     steps:
@@ -14,18 +18,18 @@ jobs:
       - name: Docker ps
         run: docker ps
         
-        #### Docker compose
-      - name: Run docker composes
-        run: docker-compose up --build -d
+      #   #### Docker compose
+      # - name: Run docker composes
+      #   run: docker-compose up --build -d
         
 
       - name: Run migrate on django
-        run: docker-compose exec -T django python manage.py migrate
+        run: docker exec -T django python manage.py migrate
 
       - name: Run createsuperuser on django
         run: |
-          docker-compose exec -T django python manage.py shell
-          docker-compose exec -T django echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')"
+          docker exec -T django python manage.py shell
+          docker exec -T django echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')"
 
       # - name: yarn install for fronend
       #   run: |
