@@ -20,6 +20,7 @@ jobs:
         run: |
           docker-compose exec -T django python manage.py shell
           docker-compose exec -T django echo  "user_obj = User.objects.create_user(username='adminTest', email='adminTest@cyd.cl', password='adminTest1234')"
+          docker-compose exec -T django echo  "user_obj = User.objects.create_user(username='admin', email='admin@cyd.cl', password='admin1234')"
       # docker-compose exec -T django echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')"
       - name: yarn install for fronend
         run: |
