@@ -5,7 +5,7 @@ import django
 from sys import platform
 import sys
 
-# sys.path.append('..')
+sys.path.append('..')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 # if platform == "linux":
 #     sys.path.append('/home/oritec/FTE')
