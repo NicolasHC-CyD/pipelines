@@ -18,7 +18,11 @@ jobs:
 
       - name: Run createsuperuser on django
         run: |
-           docker-compose exec -T django python manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')"
+           docker-compose exec -T django python manage.py shell -c 
+            "
+            from django.contrib.auth.models import User;
+            User.objects.create_superuser('admin', 'admin@example.com', 'admin1234'):
+            "
 
       - name: yarn install for fronend
         run: |
