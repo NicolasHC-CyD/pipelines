@@ -18,7 +18,7 @@ jobs:
 
       - name: Run createsuperuser on django
         run: |
-           docker-compose exec -T django bash -c "cd ./scripts && python create_user_test.py" 
+           docker-compose exec -T django sh -c "cd scripts && python create_user_test.py" 
           
 
       - name: yarn install for fronend
