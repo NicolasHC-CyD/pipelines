@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 import django
-import logging
+
 from sys import platform
 import sys
-from openpyxl import Workbook, load_workbook
 
 # sys.path.append('..')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "revergy.settings")
