@@ -8,6 +8,6 @@ describe("TEST", () => {
     cy.get('input[name="username"]').type("admin");
     cy.get('input[name="password"]').type("admin1234");
     cy.get('input[type="submit"]').parent().click();
-    cy.contains("Django administration");
+    cy.contains("Site administration");
   });
 });
