@@ -136,7 +136,7 @@ export default function Home() {
         </button>
         {data.map((el, idx) => (
           <a
-            href="http://localhost:8000/"            
+            href="http://localhost:8000/admin"            
           >
             <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
               {el}{" "}
