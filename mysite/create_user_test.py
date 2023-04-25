@@ -30,13 +30,16 @@ usuario = {
   "username": "admin",
 }
 
+from django.contrib.auth.models import User;
 def create_user():
-  user_obj = User.objects.create_user(username=usuario['username'],
-                                                email=usuario['email'],
-                                                password=usuario['password'])
-  user_obj.first_name =usuario['nombre']
-  user_obj.last_name =usuario['apellido']
-  user_obj.save()
+  
+  User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')
+  # user_obj = User.objects.create_user(username=usuario['username'],
+  #                                               email=usuario['email'],
+  #                                               password=usuario['password'])
+  # user_obj.first_name =usuario['nombre']
+  # user_obj.last_name =usuario['apellido']
+  # user_obj.save()
   print('create')
 
 if __name__ == '__main__':
