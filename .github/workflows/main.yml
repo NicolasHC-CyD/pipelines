@@ -18,7 +18,7 @@ jobs:
 
       - name: Run createsuperuser on django
         run: |
-           docker-compose exec -T django python manage.py shell -c "exec(open('create_user_test.py').read())"
+           docker-compose exec -T django python create_user_test.py
           #  docker-compose exec -T django python manage.py shell -c ""
 
       - name: yarn install for fronend
