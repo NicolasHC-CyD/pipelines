@@ -32,7 +32,7 @@ usuario = {
 
 from django.contrib.auth.models import User;
 
-User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')
+User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')
 
 # def create_user():
 #   # user_obj = User.objects.create_user(username=usuario['username'],
