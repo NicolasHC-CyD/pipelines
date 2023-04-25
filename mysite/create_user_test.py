@@ -37,9 +37,11 @@ def create_user():
   user_obj.first_name =usuario['nombre']
   user_obj.last_name =usuario['apellido']
   user_obj.save()
+  print('create')
 
 if __name__ == '__main__':
     try:
       create_user()
     except KeyboardInterrupt:
+      print('F')
       sys.exit()
