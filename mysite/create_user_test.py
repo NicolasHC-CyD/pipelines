@@ -32,20 +32,19 @@ usuario = {
 
 from django.contrib.auth.models import User;
 
-User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')
 
-# def create_user():
-#   # user_obj = User.objects.create_user(username=usuario['username'],
-#   #                                               email=usuario['email'],
-#   #                                               password=usuario['password'])
-#   # user_obj.first_name =usuario['nombre']
-#   # user_obj.last_name =usuario['apellido']
-#   # user_obj.save()
-#   print('create')
+def create_user():
+  user_obj = User.objects.create_superuser(username=usuario['username'],
+                                                email=usuario['email'],
+                                                password=usuario['password'])
+  user_obj.first_name =usuario['nombre']
+  user_obj.last_name =usuario['apellido']
+  user_obj.save()
+  print('create')
 
-# if __name__ == '__main__':
-#     try:
-#       create_user()
-#     except KeyboardInterrupt:
-#       print('F')
-#       sys.exit()
+if __name__ == '__main__':
+    try:
+      create_user()
+    except KeyboardInterrupt:
+      print('F')
+      sys.exit()
